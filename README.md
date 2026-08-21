@@ -1,7 +1,3 @@
-<<<<<<< Updated upstream
-# a7-team
-Public site for a7.team — Agency7 sales and team identity
-=======
 # a7.team
 
 Public site for **a7.team** — Agency7's sales inbox domain.
@@ -132,5 +128,3 @@ Edmonton, Alberta, Canada
 ## License
 
 Copyright © 2026 Agency7 Inc. All rights reserved.
-
->>>>>>> Stashed changes

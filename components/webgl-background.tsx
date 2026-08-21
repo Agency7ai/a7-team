@@ -156,13 +156,20 @@ export default function WebGLBackground() {
       <canvas
         ref={canvasRef}
         id="glcanvas"
-        className="fixed inset-0 w-full h-full"
-        style={{ zIndex: 0 }}
+        style={{
+          position: 'fixed',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          zIndex: -1,
+          pointerEvents: 'none',
+        }}
       />
       <button
         onClick={toggleTheme}
         className="theme-toggle"
         aria-label="Toggle theme"
+        style={{ pointerEvents: 'auto' }}
       >
         <span className="theme-toggle-track">
           <span className="theme-toggle-thumb" data-theme={theme}>

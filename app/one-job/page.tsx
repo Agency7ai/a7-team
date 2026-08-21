@@ -43,10 +43,10 @@ export default function OneJob() {
           email: '',
         });
       } else {
-        alert('Something went wrong. Please try again or email anders@a7.team directly.');
+        alert('Something went wrong. Try again.');
       }
     } catch (error) {
-      alert('Something went wrong. Please try again or email anders@a7.team directly.');
+      alert('Something went wrong. Try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -178,11 +178,6 @@ export default function OneJob() {
               {isSubmitting ? 'Sending...' : 'Tell us the job'}
             </button>
           </form>
-          )}
-          {!isSubmitted && (
-            <p className="quiet-link">
-              <a href="mailto:anders@a7.team">anders@a7.team</a>
-            </p>
           )}
         </div>
 

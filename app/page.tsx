@@ -44,7 +44,6 @@ export default function Home() {
             <a href="/one-job">One Job</a>
             <a href="/about">About</a>
             <a href="https://agency7.ca" target="_blank" rel="noopener noreferrer">Agency7.ca</a>
-            <a href="https://agency7.ca/#book" target="_blank" rel="noopener noreferrer">Book</a>
             <a href="mailto:anders@a7.team">Contact</a>
           </nav>
         </footer>

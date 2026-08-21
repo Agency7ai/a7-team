@@ -25,7 +25,7 @@ export default function OneJob() {
       `Name: ${formData.name}\n` +
       `Company: ${formData.company}\n` +
       `Town: ${formData.town}\n` +
-      `Weekly job to automate: ${formData.weeklyJob}\n` +
+      `The weekly job: ${formData.weeklyJob}\n` +
       `Email: ${formData.email}\n\n` +
       `Please reach out to discuss putting an agent on this job.`
     );
@@ -56,7 +56,7 @@ export default function OneJob() {
 
         <div className="one-job-cta-primary">
           <a href="mailto:anders@a7.team" className="cta-button cta-button-primary">
-            Book 20 minutes
+            Email Anders
           </a>
         </div>
 
@@ -65,7 +65,7 @@ export default function OneJob() {
             <h2 className="section-heading">How it works</h2>
             <ol className="numbered-list">
               <li>Pick one weekly job you already hate</li>
-              <li>Record it once</li>
+              <li>Record yourself doing it once</li>
               <li>Agent drafts the next one</li>
               <li>You send it</li>
               <li>Same job next week we check the real output and time</li>
@@ -78,7 +78,7 @@ export default function OneJob() {
               <li>You own the company</li>
               <li>10–40 people</li>
               <li>Alberta-based</li>
-              <li>ChatGPT already installed</li>
+              <li>You already have ChatGPT</li>
             </ul>
           </section>
 
@@ -94,7 +94,7 @@ export default function OneJob() {
         </div>
 
         <div className="one-job-form-section">
-          <h2 className="section-heading">Or fill this out</h2>
+          <h2 className="section-heading">Tell us the job</h2>
           <form onSubmit={handleSubmit} className="one-job-form">
             <div className="form-group">
               <label htmlFor="name" className="form-label">Name</label>
@@ -141,7 +141,7 @@ export default function OneJob() {
                 value={formData.weeklyJob}
                 onChange={(e) => setFormData({ ...formData, weeklyJob: e.target.value })}
                 className="form-input"
-                placeholder="What's the weekly job you want an agent to handle?"
+                placeholder="intake reply, quote, status note, invoice chase"
               />
             </div>
 

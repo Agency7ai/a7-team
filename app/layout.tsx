@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist } from 'next/font/google';
 import './globals.css';
+import ChunkCrawler from '@/components/chunk-crawler';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -27,7 +28,10 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       lang="en"
       className={`${geistSans.variable} antialiased`}
     >
-      <body data-theme="dark">{children}</body>
+      <body data-theme="dark">
+        {children}
+        <ChunkCrawler />
+      </body>
     </html>
   );
 }

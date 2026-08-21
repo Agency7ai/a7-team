@@ -559,6 +559,22 @@ textarea.form-input {
   min-height: 80px;
 }
 
+.quiet-link {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.quiet-link a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.quiet-link a:hover {
+  color: var(--color-text);
+}
+
 .one-job-footer {
   padding-top: 48px;
   padding-bottom: 24px;

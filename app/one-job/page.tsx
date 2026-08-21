@@ -54,12 +54,6 @@ export default function OneJob() {
           </p>
         </div>
 
-        <div className="one-job-cta-primary">
-          <a href="mailto:anders@a7.team" className="cta-button cta-button-primary">
-            Email Anders
-          </a>
-        </div>
-
         <div className="one-job-sections">
           <section className="one-job-section">
             <h2 className="section-heading">How it works</h2>
@@ -161,6 +155,9 @@ export default function OneJob() {
               Send
             </button>
           </form>
+          <p className="quiet-link">
+            <a href="mailto:anders@a7.team">anders@a7.team</a>
+          </p>
         </div>
 
         <footer className="one-job-footer">

@@ -1,1 +1,344 @@
 @import 'tailwindcss';
+
+:root {
+  --color-bg: #06103A;
+  --color-text: #ffffff;
+  --color-secondary: rgba(255, 255, 255, 0.6);
+  --color-accent: #95DBBE;
+  --color-selection: #1A63E6;
+}
+
+body[data-theme='light'] {
+  --color-bg: #F0EDE6;
+  --color-text: #111216;
+  --color-secondary: rgba(17, 18, 22, 0.6);
+  --color-accent: #1A63E6;
+  --color-selection: #95DBBE;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::selection {
+  background: var(--color-selection);
+  color: var(--color-bg);
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  overflow: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.ui-layer {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  padding: 24px;
+  gap: 24px;
+}
+
+.corner-marks::before,
+.corner-marks::after,
+.corner-marks .bottom-marks::before,
+.corner-marks .bottom-marks::after {
+  content: '';
+  position: fixed;
+  width: 24px;
+  height: 24px;
+  border-color: var(--color-secondary);
+  z-index: 10;
+}
+
+.corner-marks::before {
+  top: 24px;
+  left: 24px;
+  border-left: 1px solid var(--color-secondary);
+  border-top: 1px solid var(--color-secondary);
+}
+
+.corner-marks::after {
+  top: 24px;
+  right: 24px;
+  border-right: 1px solid var(--color-secondary);
+  border-top: 1px solid var(--color-secondary);
+}
+
+.corner-marks .bottom-marks::before {
+  bottom: 24px;
+  left: 24px;
+  border-left: 1px solid var(--color-secondary);
+  border-bottom: 1px solid var(--color-secondary);
+}
+
+.corner-marks .bottom-marks::after {
+  bottom: 24px;
+  right: 24px;
+  border-right: 1px solid var(--color-secondary);
+  border-bottom: 1px solid var(--color-secondary);
+}
+
+.sys-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sys-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sys-info-label {
+  color: var(--color-secondary);
+}
+
+.sys-info-value {
+  color: var(--color-text);
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 100;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.theme-toggle-track {
+  display: block;
+  width: 80px;
+  height: 32px;
+  border: 1px solid var(--color-secondary);
+  border-radius: 16px;
+  position: relative;
+  transition: border-color 0.3s ease;
+}
+
+.theme-toggle-thumb {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 24px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--color-text);
+  transition: left 0.3s ease;
+}
+
+.theme-toggle-thumb[data-theme='dark'] {
+  left: 4px;
+}
+
+.theme-toggle-thumb[data-theme='light'] {
+  left: calc(100% - 52px);
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-title {
+  font-size: clamp(4rem, 10vw, 12rem);
+  font-weight: 600;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  text-align: center;
+  max-width: 1400px;
+}
+
+.hero-title-italic {
+  font-style: italic;
+  display: block;
+}
+
+.definition-block {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 48px;
+  align-items: end;
+  padding-bottom: 24px;
+}
+
+.definition {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.definition-word {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.definition-phonetic {
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--color-secondary);
+}
+
+.definition-type {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-secondary);
+}
+
+.definition-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text);
+  max-width: 500px;
+}
+
+.nav {
+  display: flex;
+  gap: 24px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nav a {
+  color: var(--color-text);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+  padding-bottom: 2px;
+}
+
+.nav a:hover {
+  border-bottom-color: var(--color-text);
+}
+
+@media (max-width: 768px) {
+  .sys-info {
+    display: none;
+  }
+
+  .definition-block {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .hero-title {
+    font-size: clamp(3rem, 12vw, 6rem);
+  }
+
+  .nav {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.about-page {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.about-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--color-secondary);
+}
+
+.back-link {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+  padding-bottom: 2px;
+}
+
+.back-link:hover {
+  border-bottom-color: var(--color-text);
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.about-content h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.about-content h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 16px;
+}
+
+.about-content p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.about-content a {
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-accent);
+  transition: opacity 0.2s ease;
+}
+
+.about-content a:hover {
+  opacity: 0.7;
+}
+
+.about-content ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.about-content ul li {
+  padding-left: 24px;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.about-content ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--color-secondary);
+}

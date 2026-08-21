@@ -38,6 +38,7 @@ body {
   color: var(--color-text);
   overflow: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
+  padding-bottom: 56px;
 }
 
 .ui-layer {
@@ -79,14 +80,14 @@ body {
 }
 
 .corner-marks .bottom-marks::before {
-  bottom: 24px;
+  bottom: calc(56px + 24px);
   left: 24px;
   border-left: 1px solid var(--color-secondary);
   border-bottom: 1px solid var(--color-secondary);
 }
 
 .corner-marks .bottom-marks::after {
-  bottom: 24px;
+  bottom: calc(56px + 24px);
   right: 24px;
   border-right: 1px solid var(--color-secondary);
   border-bottom: 1px solid var(--color-secondary);
@@ -348,4 +349,16 @@ body {
   position: absolute;
   left: 0;
   color: var(--color-secondary);
+}
+
+.chunk-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-secondary);
+  z-index: 40;
+  pointer-events: none;
 }

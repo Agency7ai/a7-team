@@ -214,18 +214,21 @@ export default function ChunkCrawler() {
   }, [prefersReducedMotion]);
 
   return (
-    <canvas
-      ref={canvasRef}
-      style={{
-        position: 'fixed',
-        bottom: 0,
-        left: 0,
-        width: '100%',
-        height: `${SPRITE_CONFIG.displayHeight + 10}px`,
-        zIndex: 50,
-        pointerEvents: 'none',
-        imageRendering: 'pixelated',
-      }}
-    />
+    <>
+      <div className="chunk-footer" />
+      <canvas
+        ref={canvasRef}
+        style={{
+          position: 'fixed',
+          bottom: '8px',
+          left: 0,
+          width: '100%',
+          height: `${SPRITE_CONFIG.displayHeight + 10}px`,
+          zIndex: 50,
+          pointerEvents: 'none',
+          imageRendering: 'pixelated',
+        }}
+      />
+    </>
   );
 }

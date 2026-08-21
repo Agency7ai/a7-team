@@ -17,20 +17,39 @@ export default function OneJob() {
     email: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    const subject = encodeURIComponent('One Job Agent Request');
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\n` +
-      `Company: ${formData.company}\n` +
-      `Town: ${formData.town}\n` +
-      `The weekly job: ${formData.weeklyJob}\n` +
-      `Email: ${formData.email}\n\n` +
-      `Please reach out to discuss putting an agent on this job.`
-    );
-    
-    window.location.href = `mailto:anders@a7.team?subject=${subject}&body=${body}`;
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/submit-job', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({
+          name: '',
+          company: '',
+          town: '',
+          weeklyJob: '',
+          email: '',
+        });
+      } else {
+        alert('Something went wrong. Please try again or email anders@a7.team directly.');
+      }
+    } catch (error) {
+      alert('Something went wrong. Please try again or email anders@a7.team directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -44,13 +63,12 @@ export default function OneJob() {
       <main className="one-job-content">
         <div className="one-job-hero">
           <h1 className="one-job-title">
-            We put an agent on<br />
-            one job you already do<br />
-            this week.
+            You already have ChatGPT.<br />
+            Nobody is running it.
           </h1>
           <p className="one-job-subtitle">
-            For owner-led Alberta shops. You already have ChatGPT.<br />
-            Nobody is running it.
+            We put an agent on one job you already do this week.<br />
+            Owner-led Alberta shops.
           </p>
         </div>
 
@@ -89,6 +107,11 @@ export default function OneJob() {
 
         <div className="one-job-form-section">
           <h2 className="section-heading">Tell us the job</h2>
+          {isSubmitted ? (
+            <div className="thank-you-message">
+              <p>Thanks. We'll reach out this week.</p>
+            </div>
+          ) : (
           <form onSubmit={handleSubmit} className="one-job-form">
             <div className="form-group">
               <label htmlFor="name" className="form-label">Name</label>
@@ -135,7 +158,7 @@ export default function OneJob() {
                 value={formData.weeklyJob}
                 onChange={(e) => setFormData({ ...formData, weeklyJob: e.target.value })}
                 className="form-input"
-                placeholder="intake reply, quote, status note, invoice chase"
+                placeholder="Friday status note / quote follow-up / intake reply"
               />
             </div>
 
@@ -151,13 +174,16 @@ export default function OneJob() {
               />
             </div>
 
-            <button type="submit" className="cta-button cta-button-secondary">
-              Send
+            <button type="submit" className="cta-button cta-button-secondary" disabled={isSubmitting}>
+              {isSubmitting ? 'Sending...' : 'Tell us the job'}
             </button>
           </form>
-          <p className="quiet-link">
-            <a href="mailto:anders@a7.team">anders@a7.team</a>
-          </p>
+          )}
+          {!isSubmitted && (
+            <p className="quiet-link">
+              <a href="mailto:anders@a7.team">anders@a7.team</a>
+            </p>
+          )}
         </div>
 
         <footer className="one-job-footer">

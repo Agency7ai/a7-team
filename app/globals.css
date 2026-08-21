@@ -36,8 +36,11 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
   background: var(--color-bg);
   color: var(--color-text);
-  overflow: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body:has(.ui-layer:not(.one-job-page)) {
+  overflow: hidden;
 }
 
 .ui-layer {
@@ -557,6 +560,13 @@ body {
 textarea.form-input {
   resize: vertical;
   min-height: 80px;
+}
+
+.thank-you-message {
+  text-align: center;
+  padding: 48px 24px;
+  font-size: 18px;
+  line-height: 1.6;
 }
 
 .quiet-link {

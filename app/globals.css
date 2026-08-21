@@ -27,6 +27,11 @@ body[data-theme='light'] {
   color: var(--color-bg);
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
   background: var(--color-bg);
@@ -38,11 +43,13 @@ body {
 .ui-layer {
   position: relative;
   z-index: 1;
+  isolation: isolate;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  min-height: 100vh;
+  min-height: 100%;
   padding: 24px;
   gap: 24px;
+  color: var(--color-text);
 }
 
 .corner-marks::before,
